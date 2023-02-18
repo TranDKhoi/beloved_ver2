@@ -1,15 +1,18 @@
 part of login;
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginState()) {
-    on<LoginButtonClicked>(_loginClickedEvent);
+  LoginBloc() : super(IdleState()) {
+    on<LoginButtonClickedEvent>(_loginClickedEvent);
   }
 
-  _loginClickedEvent(LoginButtonClicked event, emit) async {
+  _loginClickedEvent(LoginButtonClickedEvent event, emit) async {
     try {
       AlertUtil.showLoading();
-      var res = await Injector.loginUseCase.login(event.email, event.password);
+      var res = await Injector.loginUseCase.login(LoginEntity(
+          email: event.email.trim(), password: event.password.trim()));
       AlertUtil.hideLoading();
+
+      emit(SuccessState());
     } catch (e) {
       ExceptionUtil.handle(e);
     }

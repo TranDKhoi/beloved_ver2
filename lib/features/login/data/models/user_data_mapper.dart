@@ -1,7 +1,7 @@
-import 'package:flutter_code_base/features/login/data/models/user_model.dart';
-import 'package:flutter_code_base/features/login/domain/entities/user_entity.dart';
+import 'package:beloved_ver2/features/login/data/models/user_model.dart';
 
 import '../../../../base/mapper/base_data_mapper.dart';
+import '../../domain/entities/user_entity.dart';
 
 class UserDataMapper extends BaseDataMapper<UserModel, UserEntity> {
   @override
