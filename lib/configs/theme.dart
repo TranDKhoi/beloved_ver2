@@ -1,4 +1,5 @@
 import 'package:beloved_ver2/configs/colors.dart';
+import 'package:beloved_ver2/configs/dimens.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -17,6 +18,8 @@ class AppTheme {
       contentPadding: EdgeInsets.zero,
       isDense: true,
     ),
+    dividerTheme:
+        const DividerThemeData(thickness: AppDimens.DIVIDER_THICKNESS),
   );
 
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -34,5 +37,7 @@ class AppTheme {
       contentPadding: EdgeInsets.zero,
       isDense: true,
     ),
+    dividerTheme:
+        const DividerThemeData(thickness: AppDimens.DIVIDER_THICKNESS),
   );
 }

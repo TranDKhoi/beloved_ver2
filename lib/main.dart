@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'di/service_locator.dart';
 import 'features/app/app.dart';
 import 'services/shared_service.dart';
 
@@ -11,6 +12,7 @@ void main() async {
 Future<void> _initialize() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedService.init();
+  ServiceLocator().initialize();
 }
 
 //here is the most basic package need for new project

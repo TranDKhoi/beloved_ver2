@@ -1,5 +1,4 @@
-import 'package:beloved_ver2/utils/extensions/context_extension.dart';
-import 'package:flutter/material.dart';
+part of main_auth;
 
 class Background extends StatelessWidget {
   const Background({Key? key}) : super(key: key);

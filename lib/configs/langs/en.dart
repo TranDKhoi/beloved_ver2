@@ -9,4 +9,15 @@ final enLang = {
   R.pleasefillalltheinformation: "Please fill all the information",
   R.invalidemailformat: "Invalid email format",
   R.passwordmustbeatleast6characters: "Password must be at least 6 characters",
+  R.wewillsendyouasecretcode:
+      "We'll send you a secret code if this email is valid",
+  R.cancel: "Cancel",
+  R.confirm: "Confirm",
+  R.passworddonotmatch: "Password do not match",
+  R.checkyouremail: "Check your email for the secret code",
+  R.didntreceiveanycode: "Didn't receive any code?",
+  R.resend: "Resend",
+  R.yourname: "Your name",
+  R.yourare: "You are",
+  R.save: "Save",
 };

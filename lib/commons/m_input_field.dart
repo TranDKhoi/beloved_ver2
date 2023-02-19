@@ -4,14 +4,12 @@ class MInputField extends StatefulWidget {
   const MInputField({
     Key? key,
     this.controller,
-    this.obscureText = false,
     this.hintText,
     this.suffixIcon,
     this.isPassword = false,
   }) : super(key: key);
 
   final TextEditingController? controller;
-  final bool obscureText;
   final String? hintText;
   final Widget? suffixIcon;
   final bool isPassword;
@@ -25,7 +23,7 @@ class _MInputFieldState extends State<MInputField> {
 
   @override
   void initState() {
-    obscureText = widget.obscureText;
+    obscureText = widget.isPassword;
     super.initState();
   }
 
