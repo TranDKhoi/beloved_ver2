@@ -5,7 +5,8 @@ import 'package:beloved_ver2/utils/extensions/translate_extension.dart';
 import '../../../../configs/langs/r.dart';
 
 abstract class VerifyEmailUseCase {
-  Future<void> sendVerifyCode(String code);
+  Future<void> confirmVerifyCode(String code);
+  Future<void> resendVerifyCode(String email);
 }
 
 class VerifyEmailUseCaseImpl implements VerifyEmailUseCase {
@@ -14,10 +15,15 @@ class VerifyEmailUseCaseImpl implements VerifyEmailUseCase {
   final VerifyEmailRepository _repository;
 
   @override
-  Future<void> sendVerifyCode(String code) async {
+  Future<void> confirmVerifyCode(String code) async {
     if (code.isEmpty) {
       throw InvalidPassword(R.pleasefillalltheinformation.translate);
     }
-    await _repository.sendVerifyCode(code);
+    await _repository.confirmVerifyCode(code);
+  }
+
+  @override
+  Future<void> resendVerifyCode(String email) async {
+    await _repository.resendVerifyCode(email);
   }
 }

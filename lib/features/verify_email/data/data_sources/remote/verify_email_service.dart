@@ -8,10 +8,17 @@ class VerifyEmailService extends BaseService {
 
   VerifyEmailService._();
 
-  Future<Response> sendVerifyCode(String code) async {
+  Future<Response> confirmVerifyCode(String code) async {
     return await dio.post(
       BaseService.VERIFY_EMAIL_PATH,
       data: jsonEncode({"code": code}),
+    );
+  }
+
+  Future<Response> resendVerifyCode(String email) async {
+    return await dio.get(
+      BaseService.VERIFY_EMAIL_PATH,
+      data: jsonEncode({"email": email}),
     );
   }
 }

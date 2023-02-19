@@ -1,7 +1,9 @@
 part of verify_email;
 
 class ResendCodeLabel extends StatelessWidget {
-  const ResendCodeLabel({super.key});
+  const ResendCodeLabel(this.currentEmail, {super.key});
+
+  final String currentEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,9 @@ class ResendCodeLabel extends StatelessWidget {
         ),
         const SizedBox(width: AppDimens.SIZED_SPACING * 0.5),
         GestureDetector(
-          onTap: () {},
+          onTap: () => context
+              .read<VerifyEmailBloc>()
+              .add(ResendButtonClickedEvent(currentEmail)),
           child: Text(
             R.resend.translate,
             textAlign: TextAlign.center,

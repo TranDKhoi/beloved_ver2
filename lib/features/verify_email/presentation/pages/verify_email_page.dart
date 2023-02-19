@@ -1,9 +1,10 @@
 part of verify_email;
 
 class VerifyEmailPage extends StatelessWidget {
-  VerifyEmailPage({Key? key}) : super(key: key);
+  VerifyEmailPage(this.currentEmail, {Key? key}) : super(key: key);
 
   final TextEditingController _codeController = TextEditingController();
+  final String currentEmail;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,7 @@ class VerifyEmailPage extends StatelessWidget {
                           ),
                           SizedBox(height: context.screenSize.height * 0.03),
                           //resend code
-                          const ResendCodeLabel(),
+                          ResendCodeLabel(currentEmail),
                         ],
                       ),
                     ),

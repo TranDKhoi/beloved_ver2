@@ -3,7 +3,12 @@ import 'package:beloved_ver2/features/verify_email/domain/repositories/verify_em
 
 class VerifyEmailRepositoryImpl implements VerifyEmailRepository {
   @override
-  Future<void> sendVerifyCode(String code) async {
-    await VerifyEmailService.ins.sendVerifyCode(code);
+  Future<void> confirmVerifyCode(String code) async {
+    await VerifyEmailService.ins.confirmVerifyCode(code);
+  }
+
+  @override
+  Future<void> resendVerifyCode(String email) async {
+    await VerifyEmailService.ins.resendVerifyCode(email);
   }
 }

@@ -20,7 +20,7 @@ class SignupUseCaseImpl implements SignupUseCase {
     if (confirmEntity.email.isEmpty ||
         confirmEntity.password.isEmpty ||
         confirmEntity.rePassword.isEmpty) {
-      throw InvalidEmail(R.pleasefillalltheinformation.translate);
+      throw InvalidEmptyField(R.pleasefillalltheinformation.translate);
     }
     if (!Validation.validEmail(confirmEntity.email)) {
       throw InvalidEmail(R.invalidemailformat.translate);

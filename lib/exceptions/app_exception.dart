@@ -11,3 +11,7 @@ class InvalidEmail extends AppException {
 class InvalidPassword extends AppException {
   InvalidPassword(String message) : super(message: message);
 }
+
+class InvalidEmptyField extends AppException {
+  InvalidEmptyField(String message) : super(message: message);
+}

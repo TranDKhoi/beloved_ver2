@@ -20,4 +20,8 @@ class R {
   static const String yourname = "Your name";
   static const String yourare = "You are";
   static const String save = "Save";
+  static const String forgotpassword = "Forgot password?";
+  static const String whichemailyouwanttoreset =
+      "Which email you want to reset?";
+  static const String resetyourpassword = "Reset your password";
 }

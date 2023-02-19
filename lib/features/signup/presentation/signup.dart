@@ -15,8 +15,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../configs/colors.dart';
 import '../../../../configs/langs/r.dart';
+import '../../../utils/alert_util.dart';
 import '../../../utils/exception_util.dart';
 import '../../verify_email/presentation/verify_email.dart';
+import '../domain/entities/confirm_entity.dart';
 
 part 'bloc/signup_bloc.dart';
 part 'bloc/signup_event.dart';

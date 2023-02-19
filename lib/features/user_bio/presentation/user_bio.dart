@@ -20,6 +20,7 @@ import '../../../configs/colors.dart';
 import '../../../configs/langs/r.dart';
 import '../../../configs/styles.dart';
 import '../../../utils/alert_util.dart';
+import '../domain/entities/create_user_bio.dart';
 import '../domain/use_cases/user_bio_usecase.dart';
 
 part 'bloc/user_bio_bloc.dart';

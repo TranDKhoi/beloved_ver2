@@ -11,3 +11,12 @@ class ConfirmButtonClickedEvent extends VerifyEmailEvent {
   @override
   List<Object?> get props => [code];
 }
+
+class ResendButtonClickedEvent extends VerifyEmailEvent {
+  final String email;
+
+  ResendButtonClickedEvent(this.email);
+
+  @override
+  List<Object?> get props => [email];
+}

@@ -27,9 +27,19 @@ class UserBioBloc extends Bloc<UserBioEvent, UserBioState> {
   FutureOr<void> _saveBioEvent(
       SaveBioEvent event, Emitter<UserBioState> emit) async {
     try {
+      var state = this.state as LoadedState;
+
+      CreateUserBioEntity bio = CreateUserBioEntity(
+          id: "id",
+          name: event.name.trim(),
+          gender: state.gender,
+          birthDay: state.birthDay);
+
       AlertUtil.showLoading();
-      var res = await _useCase.saveUserBio();
+      var res = await _useCase.saveUserBio(bio);
       AlertUtil.hideLoading();
+
+      emit(SuccessState());
     } catch (e) {
       ExceptionUtil.handle(e);
     }

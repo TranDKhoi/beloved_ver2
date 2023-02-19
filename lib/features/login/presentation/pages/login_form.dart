@@ -19,7 +19,6 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state is SuccessState) {
-            print("ok nha");
             // NavigationUtil.pushAndRemoveUntil(page: page);
           }
         },
@@ -36,7 +35,7 @@ class _LoginFormState extends State<LoginForm> {
                       suffixIcon: const Icon(Icons.close),
                       hintText: R.enteryouremail.translate,
                     ),
-                    const SizedBox(height: AppDimens.SIZED_SPACING * 1.5),
+                    const SizedBox(height: AppDimens.SIZED_SPACING * 2),
                     //password
                     MInputField(
                       controller: _passController,
@@ -46,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                     const Divider(
                       color: AppColor.primaryColor,
-                      endIndent: 0,
+                      height: AppDimens.SIZED_SPACING * 2,
                     ),
                     //login btn
                     MIconTextButton(
@@ -58,6 +57,14 @@ class _LoginFormState extends State<LoginForm> {
                       text: R.login.translate,
                       isAccept: true,
                       icon: Icons.check_circle_outline_rounded,
+                    ),
+                    const SizedBox(height: AppDimens.SIZED_SPACING * 1.5),
+                    GestureDetector(
+                      onTap: () => NavigationUtil.push(page: ForgotPassPage()),
+                      child: Text(
+                        R.forgotpassword.translate,
+                        style: AppStyle.underlineBlueNormal,
+                      ),
                     ),
                   ],
                 ),

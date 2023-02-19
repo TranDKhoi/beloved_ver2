@@ -19,7 +19,7 @@ class LoginUseCaseImpl implements LoginUseCase {
   @override
   Future<UserEntity> login(LoginEntity loginEntity) async {
     if (loginEntity.email.isEmpty || loginEntity.password.isEmpty) {
-      throw InvalidEmail(R.pleasefillalltheinformation.translate);
+      throw InvalidEmptyField(R.pleasefillalltheinformation.translate);
     }
     if (!Validation.validEmail(loginEntity.email)) {
       throw InvalidEmail(R.invalidemailformat.translate);

@@ -17,7 +17,7 @@ class LanguageUtil {
     Locale('en'),
   ];
 
-  Locale currentLocale = const Locale('vi');
+  Locale currentLocale = const Locale('en');
 
   final Map<String, Map<String, String>> _languageValueMap = {
     'en': enLang,

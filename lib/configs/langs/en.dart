@@ -20,4 +20,7 @@ final enLang = {
   R.yourname: "Your name",
   R.yourare: "You are",
   R.save: "Save",
+  R.forgotpassword: "Forgot password?",
+  R.whichemailyouwanttoreset: "Which email you want to reset?",
+  R.resetyourpassword: "Reset your password",
 };
