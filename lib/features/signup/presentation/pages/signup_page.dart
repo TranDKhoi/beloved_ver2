@@ -14,7 +14,9 @@ class SignupPage extends StatelessWidget {
       child: BlocConsumer<SignupBloc, SignupState>(
         listener: (context, state) {
           if (state is ConfirmSuccessState) {
-            NavigationUtil.push(page: VerifyEmailPage(_emailController.text));
+            NavigationUtil.push(
+                page: VerifyEmailPage(
+                    _emailController.text.trim(), _passController.text.trim()));
           }
         },
         builder: (context, state) => Scaffold(

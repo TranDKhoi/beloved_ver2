@@ -13,12 +13,13 @@ class ConfirmEmailEvent extends ForgotPassEvent {
 }
 
 class ConfirmCodeEvent extends ForgotPassEvent {
+  final String email;
   final String code;
 
-  ConfirmCodeEvent(this.code);
+  ConfirmCodeEvent(this.email, this.code);
 
   @override
-  List<Object?> get props => [code];
+  List<Object?> get props => [email, code];
 }
 
 class ResendButtonClickedEvent extends ForgotPassEvent {

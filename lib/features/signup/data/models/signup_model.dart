@@ -1,8 +1,8 @@
-class ConfirmModel {
+class SignupModel {
   final String email;
   final String password;
 
-  const ConfirmModel({
+  const SignupModel({
     required this.email,
     required this.password,
   });
@@ -14,8 +14,8 @@ class ConfirmModel {
     };
   }
 
-  factory ConfirmModel.fromJson(Map<String, dynamic> map) {
-    return ConfirmModel(
+  factory SignupModel.fromJson(Map<String, dynamic> map) {
+    return SignupModel(
       email: map['email'] as String,
       password: map['password'] as String,
     );

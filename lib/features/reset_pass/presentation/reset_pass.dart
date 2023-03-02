@@ -2,8 +2,10 @@ library reset_pass;
 
 import 'dart:async';
 
+import 'package:beloved_ver2/features/forgot_pass/domain/entities/reset_pass_entity.dart';
 import 'package:beloved_ver2/features/main_auth/presentation/main_auth.dart';
 import 'package:beloved_ver2/features/reset_pass/domain/use_cases/reset_pass_usecase.dart';
+import 'package:beloved_ver2/global/variable.dart';
 import 'package:beloved_ver2/utils/alert_util.dart';
 import 'package:beloved_ver2/utils/exception_util.dart';
 import 'package:beloved_ver2/utils/extensions/context_extension.dart';

@@ -14,6 +14,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           email: event.email.trim(), password: event.password.trim()));
       AlertUtil.hideLoading();
 
+      //if success then save token to local and
+      SharedService.setUserToken(res.token!);
+      //save to global app state
+      GlobalVariable.currentUser = res;
+
       emit(SuccessState());
     } catch (e) {
       ExceptionUtil.handle(e);

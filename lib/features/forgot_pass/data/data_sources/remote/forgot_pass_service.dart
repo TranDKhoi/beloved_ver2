@@ -9,10 +9,23 @@ class ForgotPassService extends BaseService {
   ForgotPassService._();
 
   Future<Response> sendVerifyCode(String email) async {
-    return await dio.get("", data: jsonEncode({"email": email}));
+    return await dio.post(
+      BaseService.FORGOT_PASSWORD,
+      queryParameters: {"email": email},
+    );
   }
 
-  Future<Response> confirmVerifyCode(String code) async {
-    return await dio.get("", data: jsonEncode({"code": code}));
+  Future<Response> confirmVerifyCode(String email, String code) async {
+    return await dio.post(
+      BaseService.VERIFY_FORGOT,
+      data: jsonEncode({"email": email, "code": code}),
+    );
+  }
+
+  Future<Response> resendCode(String email) async {
+    return await dio.post(
+      BaseService.RESEND_FORGOT,
+      queryParameters: {"email": email},
+    );
   }
 }

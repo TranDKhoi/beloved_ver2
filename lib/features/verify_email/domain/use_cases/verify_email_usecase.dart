@@ -1,12 +1,14 @@
 import 'package:beloved_ver2/exceptions/app_exception.dart';
+import 'package:beloved_ver2/features/login/domain/entities/user_entity.dart';
+import 'package:beloved_ver2/features/verify_email/domain/entities/verify_email_entity.dart';
 import 'package:beloved_ver2/features/verify_email/domain/repositories/verify_email_repository.dart';
 import 'package:beloved_ver2/utils/extensions/translate_extension.dart';
 
 import '../../../../configs/langs/r.dart';
 
 abstract class VerifyEmailUseCase {
-  Future<void> confirmVerifyCode(String code);
-  Future<void> resendVerifyCode(String email);
+  Future<UserEntity> confirmVerifyCode(VerifyEmailEntity verifyEmailEntity);
+  Future<void> resendVerifyCode(String email, String password);
 }
 
 class VerifyEmailUseCaseImpl implements VerifyEmailUseCase {
@@ -15,15 +17,16 @@ class VerifyEmailUseCaseImpl implements VerifyEmailUseCase {
   final VerifyEmailRepository _repository;
 
   @override
-  Future<void> confirmVerifyCode(String code) async {
-    if (code.isEmpty) {
+  Future<UserEntity> confirmVerifyCode(
+      VerifyEmailEntity verifyEmailEntity) async {
+    if (verifyEmailEntity.code.isEmpty) {
       throw InvalidPassword(R.pleasefillalltheinformation.translate);
     }
-    await _repository.confirmVerifyCode(code);
+    return await _repository.confirmVerifyCode(verifyEmailEntity);
   }
 
   @override
-  Future<void> resendVerifyCode(String email) async {
-    await _repository.resendVerifyCode(email);
+  Future<void> resendVerifyCode(String email, String password) async {
+    await _repository.resendVerifyCode(email, password);
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:beloved_ver2/features/login/data/models/login_model.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../../base/data/remote/base_service.dart';
@@ -9,10 +10,10 @@ class LoginService extends BaseService {
 
   static final ins = LoginService._();
 
-  Future<Response> login(String email, String password) async {
+  Future<Response> login(LoginModel loginModel) async {
     return await dio.post(
-      BaseService.LOGIN_PATH,
-      data: jsonEncode({"email": "test@gmail.com", "password": "123123123"}),
+      BaseService.LOGIN,
+      data: jsonEncode(loginModel),
     );
   }
 }

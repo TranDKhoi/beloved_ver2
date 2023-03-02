@@ -11,7 +11,7 @@ class UserBioService extends BaseService {
 
   Future<Response> saveUserBio(CreateUserBioModel model) async {
     return await dio.put(
-      BaseService.SAVE_USER,
+      BaseService.UPDATE_USER_BIO,
       data: jsonEncode(model),
     );
   }

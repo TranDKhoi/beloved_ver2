@@ -6,11 +6,11 @@ abstract class ResetPassEvent extends Equatable {}
 class ConfirmButtonClickedEvent extends ResetPassEvent {
   final String pass;
   final String rePass;
-  final String token;
+  final ResetPassEntity entity;
 
   ConfirmButtonClickedEvent(
-      {required this.pass, required this.rePass, required this.token});
+      {required this.pass, required this.rePass, required this.entity});
 
   @override
-  List<Object?> get props => [pass, rePass, token];
+  List<Object?> get props => [pass, rePass, entity];
 }

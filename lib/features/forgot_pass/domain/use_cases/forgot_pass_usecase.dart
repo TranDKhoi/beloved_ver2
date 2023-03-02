@@ -7,8 +7,8 @@ import '../repositories/forgot_pass_repository.dart';
 
 abstract class ForgotPassUseCase {
   Future<void> sendVerifyCode(String email);
-
-  Future<String> confirmVerifyCode(String code);
+  Future<void> resendCode(String email);
+  Future<String> confirmVerifyCode(String email, String code);
 }
 
 class ForgotPassUseCaseImpl implements ForgotPassUseCase {
@@ -28,10 +28,15 @@ class ForgotPassUseCaseImpl implements ForgotPassUseCase {
   }
 
   @override
-  Future<String> confirmVerifyCode(String code) async {
+  Future<String> confirmVerifyCode(String email, String code) async {
     if (code.isEmpty) {
       throw InvalidEmptyField(R.pleasefillalltheinformation.translate);
     }
-    return await _repository.confirmVerifyCode(code);
+    return await _repository.confirmVerifyCode(email, code);
+  }
+
+  @override
+  Future<void> resendCode(String email) async {
+    await _repository.resendCode(email);
   }
 }

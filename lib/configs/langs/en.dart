@@ -23,4 +23,5 @@ final enLang = {
   R.forgotpassword: "Forgot password?",
   R.whichemailyouwanttoreset: "Which email you want to reset?",
   R.resetyourpassword: "Reset your password",
+  R.resendcodesuccess: "Resend code success",
 };

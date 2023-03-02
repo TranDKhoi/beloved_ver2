@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:beloved_ver2/base/data/remote/base_service.dart';
+import 'package:beloved_ver2/features/verify_email/data/models/verify_email_model.dart';
 import 'package:dio/dio.dart';
 
 class VerifyEmailService extends BaseService {
@@ -8,17 +9,17 @@ class VerifyEmailService extends BaseService {
 
   VerifyEmailService._();
 
-  Future<Response> confirmVerifyCode(String code) async {
+  Future<Response> confirmVerifyCode(VerifyEmailModel verifyEmailModel) async {
     return await dio.post(
-      BaseService.VERIFY_EMAIL_PATH,
-      data: jsonEncode({"code": code}),
+      BaseService.VERIFY_SIGNUP,
+      data: jsonEncode(verifyEmailModel),
     );
   }
 
-  Future<Response> resendVerifyCode(String email) async {
-    return await dio.get(
-      BaseService.VERIFY_EMAIL_PATH,
-      data: jsonEncode({"email": email}),
+  Future<Response> resendVerifyCode(String email, String password) async {
+    return await dio.post(
+      BaseService.RESEND_SIGNUP,
+      data: jsonEncode({"email": email, "password": password}),
     );
   }
 }

@@ -14,8 +14,9 @@ class ResetPassBloc extends Bloc<ResetPassEvent, ResetPassState> {
       var res = await _useCase.resetPassword(
         event.pass.trim(),
         event.rePass.trim(),
-        event.token,
+        event.entity,
       );
+      GlobalVariable.currentUser = res;
       AlertUtil.hideLoading();
 
       emit(SuccessState());

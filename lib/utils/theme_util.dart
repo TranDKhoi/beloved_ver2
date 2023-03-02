@@ -10,7 +10,7 @@ class ThemeUtil {
   static ThemeMode currentMode = ThemeMode.system;
 
   void getLocalTheme() {
-    bool? isDark = SharedService().getCurrentTheme();
+    bool? isDark = SharedService.getCurrentTheme();
 
     if (isDark == null) {
       final darkMode = WidgetsBinding.instance.window.platformBrightness;
@@ -26,6 +26,6 @@ class ThemeUtil {
 
   void _updateLocalTheme(bool isDark) {
     currentMode = isDark ? ThemeMode.dark : ThemeMode.dark;
-    SharedService().setCurrentTheme(isDark);
+    SharedService.setCurrentTheme(isDark);
   }
 }

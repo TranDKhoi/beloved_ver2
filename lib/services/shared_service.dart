@@ -7,19 +7,27 @@ class SharedService {
     _pref = await SharedPreferences.getInstance();
   }
 
-  String? getCurrentLang() {
+  static String? getCurrentLang() {
     return _pref.getString("language");
   }
 
-  void setCurrentLang(String currentLang) {
+  static void setCurrentLang(String currentLang) {
     _pref.setString("language", currentLang);
   }
 
-  bool? getCurrentTheme() {
+  static bool? getCurrentTheme() {
     return _pref.getBool("theme");
   }
 
-  void setCurrentTheme(bool isDark) {
+  static void setCurrentTheme(bool isDark) {
     _pref.setBool("theme", isDark);
+  }
+
+  static String? getUserToken() {
+    return _pref.getString("userToken");
+  }
+
+  static void setUserToken(String token) {
+    _pref.setString("userToken", token);
   }
 }

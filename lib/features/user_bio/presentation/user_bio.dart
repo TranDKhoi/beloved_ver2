@@ -19,6 +19,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../configs/colors.dart';
 import '../../../configs/langs/r.dart';
 import '../../../configs/styles.dart';
+import '../../../global/variable.dart';
 import '../../../utils/alert_util.dart';
 import '../domain/entities/create_user_bio.dart';
 import '../domain/use_cases/user_bio_usecase.dart';

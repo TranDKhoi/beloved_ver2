@@ -1,9 +1,10 @@
 part of verify_email;
 
 class ResendCodeLabel extends StatelessWidget {
-  const ResendCodeLabel(this.currentEmail, {super.key});
+  const ResendCodeLabel(this.currentEmail, this.currentPassword, {super.key});
 
   final String currentEmail;
+  final String currentPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ResendCodeLabel extends StatelessWidget {
         GestureDetector(
           onTap: () => context
               .read<VerifyEmailBloc>()
-              .add(ResendButtonClickedEvent(currentEmail)),
+              .add(ResendButtonClickedEvent(currentEmail, currentPassword)),
           child: Text(
             R.resend.translate,
             textAlign: TextAlign.center,

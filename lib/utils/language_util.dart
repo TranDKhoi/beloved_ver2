@@ -52,7 +52,7 @@ class LanguageUtil {
   }
 
   void getLocalLanguage() async {
-    var res = SharedService().getCurrentLang();
+    var res = SharedService.getCurrentLang();
     if (res == null) {
       currentLanguage = ui.window.locale.languageCode;
     } else {
@@ -65,7 +65,7 @@ class LanguageUtil {
   _updateLocalLanguage(String langCode) {
     currentLanguage = langCode;
     currentLocale = Locale(langCode);
-    SharedService().setCurrentLang(currentLanguage);
+    SharedService.setCurrentLang(currentLanguage);
   }
 
   void changeLanguage(String langCode) {

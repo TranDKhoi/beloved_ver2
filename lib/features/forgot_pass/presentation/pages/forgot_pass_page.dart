@@ -15,7 +15,7 @@ class ForgotPassPage extends StatelessWidget {
           listener: (context, state) {
             if (state is ConfirmCodeSuccessState) {
               NavigationUtil.pushAndRemoveUntil(
-                  page: ResetPassPage(state.token));
+                  page: ResetPassPage(state.resetPassEntity));
             }
           },
           builder: (context, state) {

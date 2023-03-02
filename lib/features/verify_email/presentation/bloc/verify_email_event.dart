@@ -5,18 +5,20 @@ abstract class VerifyEmailEvent extends Equatable {}
 
 class ConfirmButtonClickedEvent extends VerifyEmailEvent {
   final String code;
+  final String email;
 
-  ConfirmButtonClickedEvent(this.code);
+  ConfirmButtonClickedEvent(this.email, this.code);
 
   @override
-  List<Object?> get props => [code];
+  List<Object?> get props => [email, code];
 }
 
 class ResendButtonClickedEvent extends VerifyEmailEvent {
   final String email;
+  final String password;
 
-  ResendButtonClickedEvent(this.email);
+  ResendButtonClickedEvent(this.email, this.password);
 
   @override
-  List<Object?> get props => [email];
+  List<Object?> get props => [email, password];
 }

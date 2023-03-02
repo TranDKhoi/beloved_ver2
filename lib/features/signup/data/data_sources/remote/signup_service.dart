@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:beloved_ver2/base/data/remote/base_service.dart';
-import 'package:beloved_ver2/features/signup/data/models/confirm_model.dart';
+import 'package:beloved_ver2/features/signup/data/models/signup_model.dart';
 import 'package:dio/dio.dart';
 
 class SignupService extends BaseService {
@@ -9,10 +9,10 @@ class SignupService extends BaseService {
 
   static final ins = SignupService._();
 
-  Future<Response> confirmSignup(ConfirmModel confirmModel) async {
+  Future<Response> confirmSignup(SignupModel signupModel) async {
     return await dio.post(
-      BaseService.SIGNUP_PATH,
-      data: jsonEncode(confirmModel),
+      BaseService.SIGNUP,
+      data: jsonEncode(signupModel),
     );
   }
 }

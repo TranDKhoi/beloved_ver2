@@ -10,14 +10,14 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   _onConfirmButtonClicked(
       ConfirmButtonClickedEvent event, Emitter<SignupState> emit) async {
     try {
-      var confirmEntity = ConfirmEntity(
+      var signupEntity = SignupEntity(
         email: event.email.trim(),
         password: event.pass.trim(),
         rePassword: event.repass.trim(),
       );
 
       AlertUtil.showLoading();
-      var res = await _useCase.confirmEmailPassword(confirmEntity);
+      await _useCase.signup(signupEntity);
       AlertUtil.hideLoading();
 
       emit(ConfirmSuccessState());

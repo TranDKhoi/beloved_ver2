@@ -1,10 +1,12 @@
 part of verify_email;
 
 class VerifyEmailPage extends StatelessWidget {
-  VerifyEmailPage(this.currentEmail, {Key? key}) : super(key: key);
+  VerifyEmailPage(this.currentEmail, this.currentPassword, {Key? key})
+      : super(key: key);
 
   final TextEditingController _codeController = TextEditingController();
   final String currentEmail;
+  final String currentPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -36,36 +38,16 @@ class VerifyEmailPage extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: context.screenSize.height * 0.03),
-                          PinCodeTextField(
-                            length: 4,
-                            obscureText: false,
-                            animationType: AnimationType.scale,
-                            pinTheme: PinTheme(
-                              shape: PinCodeFieldShape.underline,
-                              fieldHeight: 50,
-                              fieldWidth: 40,
-                              inactiveColor: Colors.grey,
-                              selectedColor: AppColor.primaryColor,
-                              activeColor: AppColor.primaryColor,
-                            ),
-                            animationDuration:
-                                const Duration(milliseconds: 300),
-                            controller: _codeController,
-                            onCompleted: (v) => context
-                                .read<VerifyEmailBloc>()
-                                .add(ConfirmButtonClickedEvent(v)),
-                            beforeTextPaste: (text) {
-                              return false;
-                            },
-                            appContext: context,
-                            onChanged: (String value) {},
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                          ),
+                          MPinCodeField(
+                              controller: _codeController,
+                              onComplete: () {
+                                context.read<VerifyEmailBloc>().add(
+                                    ConfirmButtonClickedEvent(
+                                        currentEmail, _codeController.text));
+                              }),
                           SizedBox(height: context.screenSize.height * 0.03),
                           //resend code
-                          ResendCodeLabel(currentEmail),
+                          ResendCodeLabel(currentEmail, currentPassword),
                         ],
                       ),
                     ),
@@ -88,9 +70,9 @@ class VerifyEmailPage extends StatelessWidget {
                     ),
                     const VerticalDivider(width: 0),
                     MLabelButton(
-                      onTap: () => context
-                          .read<VerifyEmailBloc>()
-                          .add(ConfirmButtonClickedEvent(_codeController.text)),
+                      onTap: () => context.read<VerifyEmailBloc>().add(
+                          ConfirmButtonClickedEvent(
+                              currentEmail, _codeController.text)),
                       icon: Icons.check_circle_outline,
                       text: R.confirm.translate,
                       isAccept: true,

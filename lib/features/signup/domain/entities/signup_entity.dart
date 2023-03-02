@@ -1,8 +1,8 @@
-class ConfirmEntity {
+class SignupEntity {
   final String email;
   final String password;
   final String rePassword;
 
-  ConfirmEntity(
+  SignupEntity(
       {required this.email, required this.password, required this.rePassword});
 }

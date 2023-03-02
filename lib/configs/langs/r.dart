@@ -24,4 +24,5 @@ class R {
   static const String whichemailyouwanttoreset =
       "Which email you want to reset?";
   static const String resetyourpassword = "Reset your password";
+  static const String resendcodesuccess = "Resend code success";
 }

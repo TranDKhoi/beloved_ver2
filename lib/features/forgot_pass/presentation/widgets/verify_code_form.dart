@@ -28,30 +28,12 @@ class VerifyCodeForm extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: context.screenSize.height * 0.03),
-                    PinCodeTextField(
-                      length: 4,
-                      obscureText: false,
-                      animationType: AnimationType.scale,
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.underline,
-                        fieldHeight: 50,
-                        fieldWidth: 40,
-                        inactiveColor: Colors.grey,
-                        selectedColor: AppColor.primaryColor,
-                        activeColor: AppColor.primaryColor,
-                      ),
-                      animationDuration: const Duration(milliseconds: 300),
-                      controller: _codeController,
-                      onCompleted: (v) => context
-                          .read<ForgotPassBloc>()
-                          .add(ConfirmCodeEvent(v)),
-                      beforeTextPaste: (text) {
-                        return false;
-                      },
-                      appContext: context,
-                      onChanged: (String value) {},
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    ),
+                    MPinCodeField(
+                        controller: _codeController,
+                        onComplete: () {
+                          context.read<ForgotPassBloc>().add(ConfirmCodeEvent(
+                              _emailController.text, _codeController.text));
+                        }),
                     SizedBox(height: context.screenSize.height * 0.03),
                     //resend code
                     Row(
@@ -96,9 +78,9 @@ class VerifyCodeForm extends StatelessWidget {
               ),
               const VerticalDivider(width: 0),
               MLabelButton(
-                onTap: () => context
-                    .read<ForgotPassBloc>()
-                    .add(ConfirmCodeEvent(_codeController.text)),
+                onTap: () => context.read<ForgotPassBloc>().add(
+                    ConfirmCodeEvent(
+                        _emailController.text, _codeController.text)),
                 icon: Icons.check_circle_outline,
                 text: R.confirm.translate,
                 isAccept: true,

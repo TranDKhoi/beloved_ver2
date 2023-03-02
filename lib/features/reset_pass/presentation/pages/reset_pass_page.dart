@@ -1,11 +1,11 @@
 part of reset_pass;
 
 class ResetPassPage extends StatelessWidget {
-  ResetPassPage(this._token, {Key? key}) : super(key: key);
+  ResetPassPage(this._entity, {Key? key}) : super(key: key);
 
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _rePassController = TextEditingController();
-  final String _token;
+  final ResetPassEntity _entity;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class ResetPassPage extends StatelessWidget {
                             ConfirmButtonClickedEvent(
                                 pass: _passController.text,
                                 rePass: _rePassController.text,
-                                token: _token),
+                                entity: _entity),
                           ),
                       icon: Icons.check_circle_outline,
                       text: R.confirm.translate,

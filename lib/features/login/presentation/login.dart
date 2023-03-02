@@ -5,6 +5,8 @@ import 'package:beloved_ver2/configs/dimens.dart';
 import 'package:beloved_ver2/configs/styles.dart';
 import 'package:beloved_ver2/di/service_locator.dart';
 import 'package:beloved_ver2/features/login/domain/entities/login_entity.dart';
+import 'package:beloved_ver2/global/variable.dart';
+import 'package:beloved_ver2/services/shared_service.dart';
 import 'package:beloved_ver2/utils/extensions/translate_extension.dart';
 import 'package:beloved_ver2/utils/navigation_util.dart';
 import 'package:equatable/equatable.dart';

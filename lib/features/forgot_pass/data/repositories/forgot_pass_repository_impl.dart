@@ -1,6 +1,5 @@
 import 'package:beloved_ver2/features/forgot_pass/data/data_sources/remote/forgot_pass_service.dart';
 import 'package:beloved_ver2/features/forgot_pass/domain/repositories/forgot_pass_repository.dart';
-import 'package:beloved_ver2/utils/extensions/dio_extension.dart';
 
 class ForgotPassRepositoryImpl implements ForgotPassRepository {
   @override
@@ -9,9 +8,14 @@ class ForgotPassRepositoryImpl implements ForgotPassRepository {
   }
 
   @override
-  Future<String> confirmVerifyCode(String code) async {
-    var res = await ForgotPassService.ins.confirmVerifyCode(code);
-    var token = res.serverData;
+  Future<String> confirmVerifyCode(String email, String code) async {
+    var res = await ForgotPassService.ins.confirmVerifyCode(email, code);
+    var token = res.data["randomCode"];
     return token;
+  }
+
+  @override
+  Future<void> resendCode(String email) async {
+    await ForgotPassService.ins.resendCode(email);
   }
 }

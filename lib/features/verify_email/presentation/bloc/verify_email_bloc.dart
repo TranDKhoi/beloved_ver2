@@ -11,8 +11,12 @@ class VerifyEmailBloc extends Bloc<VerifyEmailEvent, VerifyEmailState> {
   Future<void> _confirmButtonClicked(
       ConfirmButtonClickedEvent event, Emitter<VerifyEmailState> emit) async {
     try {
+      var verifyEntity =
+          VerifyEmailEntity(email: event.email, code: event.code);
+
       AlertUtil.showLoading();
-      var res = await _useCase.confirmVerifyCode(event.code.trim());
+      var res = await _useCase.confirmVerifyCode(verifyEntity);
+      GlobalVariable.currentUser = res;
       AlertUtil.hideLoading();
 
       emit(SuccessState());
@@ -25,8 +29,10 @@ class VerifyEmailBloc extends Bloc<VerifyEmailEvent, VerifyEmailState> {
       ResendButtonClickedEvent event, Emitter<VerifyEmailState> emit) async {
     try {
       AlertUtil.showLoading();
-      var res = await _useCase.resendVerifyCode(event.email.trim());
+      await _useCase.resendVerifyCode(
+          event.email.trim(), event.password.trim());
       AlertUtil.hideLoading();
+      AlertUtil.showToast(R.resendcodesuccess.translate);
     } catch (e) {
       ExceptionUtil.handle(e);
     }

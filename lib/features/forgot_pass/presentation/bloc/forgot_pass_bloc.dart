@@ -13,7 +13,7 @@ class ForgotPassBloc extends Bloc<ForgotPassEvent, ForgotPassState> {
       ConfirmEmailEvent event, Emitter<ForgotPassState> emit) async {
     try {
       AlertUtil.showLoading();
-      var res = await _useCase.sendVerifyCode(event.email.trim());
+      await _useCase.sendVerifyCode(event.email.trim());
       AlertUtil.hideLoading();
       emit(ConfirmSuccessState());
     } catch (e) {
@@ -25,9 +25,16 @@ class ForgotPassBloc extends Bloc<ForgotPassEvent, ForgotPassState> {
       ConfirmCodeEvent event, Emitter<ForgotPassState> emit) async {
     try {
       AlertUtil.showLoading();
-      var token = await _useCase.confirmVerifyCode(event.code.trim());
+      var token = await _useCase.confirmVerifyCode(
+        event.email.trim(),
+        event.code.trim(),
+      );
       AlertUtil.hideLoading();
-      emit(ConfirmCodeSuccessState(token));
+
+      ResetPassEntity entity =
+          ResetPassEntity(email: event.email.trim(), password: '', code: token);
+
+      emit(ConfirmCodeSuccessState(entity));
     } catch (e) {
       ExceptionUtil.handle(e);
     }
@@ -37,7 +44,7 @@ class ForgotPassBloc extends Bloc<ForgotPassEvent, ForgotPassState> {
       ResendButtonClickedEvent event, Emitter<ForgotPassState> emit) async {
     try {
       AlertUtil.showLoading();
-      var res = await _useCase.sendVerifyCode(event.email.trim());
+      await _useCase.resendCode(event.email.trim());
       AlertUtil.hideLoading();
       emit(ConfirmSuccessState());
     } catch (e) {

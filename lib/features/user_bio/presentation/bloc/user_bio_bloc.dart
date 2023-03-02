@@ -28,15 +28,18 @@ class UserBioBloc extends Bloc<UserBioEvent, UserBioState> {
       SaveBioEvent event, Emitter<UserBioState> emit) async {
     try {
       var state = this.state as LoadedState;
-
+      var currentUser = GlobalVariable.currentUser;
       CreateUserBioEntity bio = CreateUserBioEntity(
-          id: "id",
-          name: event.name.trim(),
-          gender: state.gender,
-          birthDay: state.birthDay);
+        id: currentUser?.id ?? "null-id",
+        name: event.name.trim(),
+        gender: state.gender,
+        birthDay: state.birthDay,
+      );
 
       AlertUtil.showLoading();
       var res = await _useCase.saveUserBio(bio);
+      res.token = GlobalVariable.currentUser?.token ?? "null-id";
+      GlobalVariable.currentUser = res;
       AlertUtil.hideLoading();
 
       emit(SuccessState());

@@ -14,10 +14,10 @@ class ConfirmSuccessState extends ForgotPassState {
 }
 
 class ConfirmCodeSuccessState extends ForgotPassState {
-  final String token;
+  final ResetPassEntity resetPassEntity;
 
-  ConfirmCodeSuccessState(this.token);
+  ConfirmCodeSuccessState(this.resetPassEntity);
 
   @override
-  List<Object?> get props => [token];
+  List<Object?> get props => [resetPassEntity];
 }

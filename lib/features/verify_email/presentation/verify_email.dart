@@ -2,19 +2,20 @@ library verify_email;
 
 import 'dart:async';
 
+import 'package:beloved_ver2/commons/m_pincode_field.dart';
 import 'package:beloved_ver2/configs/dimens.dart';
 import 'package:beloved_ver2/di/service_locator.dart';
 import 'package:beloved_ver2/features/user_bio/presentation/user_bio.dart';
+import 'package:beloved_ver2/features/verify_email/domain/entities/verify_email_entity.dart';
 import 'package:beloved_ver2/features/verify_email/domain/use_cases/verify_email_usecase.dart';
+import 'package:beloved_ver2/global/variable.dart';
 import 'package:beloved_ver2/utils/alert_util.dart';
 import 'package:beloved_ver2/utils/exception_util.dart';
 import 'package:beloved_ver2/utils/extensions/context_extension.dart';
 import 'package:beloved_ver2/utils/extensions/translate_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../commons/m_label_button.dart';
 import '../../../../configs/colors.dart';
