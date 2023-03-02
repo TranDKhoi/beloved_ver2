@@ -4,6 +4,7 @@ import 'package:beloved_ver2/commons/m_icon_text_button.dart';
 import 'package:beloved_ver2/configs/dimens.dart';
 import 'package:beloved_ver2/configs/styles.dart';
 import 'package:beloved_ver2/di/service_locator.dart';
+import 'package:beloved_ver2/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:beloved_ver2/features/login/domain/entities/login_entity.dart';
 import 'package:beloved_ver2/global/variable.dart';
 import 'package:beloved_ver2/services/shared_service.dart';

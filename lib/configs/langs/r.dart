@@ -25,4 +25,10 @@ class R {
       "Which email you want to reset?";
   static const String resetyourpassword = "Reset your password";
   static const String resendcodesuccess = "Resend code success";
+  static const String timeline = "Timeline";
+  static const String calendar = "Calendar";
+  static const String more = "More";
+  static const String days = "days";
+  static const String morepost = "More post";
+  static const String since = "since";
 }

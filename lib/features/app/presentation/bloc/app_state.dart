@@ -11,16 +11,19 @@ class LoadingState extends AppState {
 class LoadedState extends AppState {
   final ThemeMode currentMode;
   final String currentLang;
+  final bool isVerified;
 
-  LoadedState({required this.currentMode, required this.currentLang});
+  LoadedState(
+      {required this.currentMode,
+      required this.currentLang,
+      this.isVerified = false});
 
-  LoadedState copyWith({
-    ThemeMode? currentTheme,
-    String? currentLang,
-  }) {
+  LoadedState copyWith(
+      {ThemeMode? currentTheme, String? currentLang, bool? isVerified}) {
     return LoadedState(
       currentMode: currentMode,
       currentLang: currentLang ?? this.currentLang,
+      isVerified: isVerified ?? this.isVerified,
     );
   }
 
@@ -28,5 +31,6 @@ class LoadedState extends AppState {
   List<Object> get props => [
         currentMode,
         currentLang,
+        isVerified,
       ];
 }

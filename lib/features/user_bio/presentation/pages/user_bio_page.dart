@@ -12,7 +12,7 @@ class UserBioPage extends StatelessWidget {
       child: BlocListener<UserBioBloc, UserBioState>(
         listener: (context, state) {
           if (state is SuccessState) {
-            // NavigationUtil.pushAndRemoveUntil(page: HomePage());
+            NavigationUtil.pushAndRemoveUntil(page: const BottomNavBar());
           }
         },
         child: Scaffold(

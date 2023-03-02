@@ -1,6 +1,5 @@
 import 'package:beloved_ver2/features/login/domain/entities/user_entity.dart';
 
-class GlobalVariable {
-  static UserEntity? currentUser;
-  static String? token;
+abstract class AppRepository {
+  Future<UserEntity> getUserData();
 }

@@ -20,7 +20,10 @@ import '../../../configs/colors.dart';
 import '../../../configs/langs/r.dart';
 import '../../../configs/styles.dart';
 import '../../../global/variable.dart';
+import '../../../services/shared_service.dart';
 import '../../../utils/alert_util.dart';
+import '../../../utils/navigation_util.dart';
+import '../../bottom_nav_bar/bottom_nav_bar.dart';
 import '../domain/entities/create_user_bio.dart';
 import '../domain/use_cases/user_bio_usecase.dart';
 

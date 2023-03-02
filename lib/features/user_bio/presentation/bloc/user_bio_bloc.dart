@@ -38,9 +38,13 @@ class UserBioBloc extends Bloc<UserBioEvent, UserBioState> {
 
       AlertUtil.showLoading();
       var res = await _useCase.saveUserBio(bio);
-      res.token = GlobalVariable.currentUser?.token ?? "null-id";
-      GlobalVariable.currentUser = res;
       AlertUtil.hideLoading();
+
+      //if success then save token to local
+      res.token = GlobalVariable.currentUser?.token ?? "null-id";
+      SharedService.setUserToken(res.token!);
+      //save to global app state
+      GlobalVariable.currentUser = res;
 
       emit(SuccessState());
     } catch (e) {

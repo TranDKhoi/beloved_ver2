@@ -5,6 +5,7 @@ class UserEntity {
   final String name;
   final int gender;
   final DateTime birthDay;
+  UserEntity? partner;
   String? token;
 
   UserEntity({
@@ -15,5 +16,6 @@ class UserEntity {
     required this.gender,
     required this.birthDay,
     this.token,
+    this.partner,
   });
 }

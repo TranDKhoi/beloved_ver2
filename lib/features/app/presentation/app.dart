@@ -1,11 +1,13 @@
 import 'package:beloved_ver2/configs/theme.dart';
+import 'package:beloved_ver2/di/service_locator.dart';
+import 'package:beloved_ver2/features/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import '../../../utils/global_keys.dart';
-import '../../utils/language_util.dart';
-import '../main_auth/presentation/main_auth.dart';
+import '../../../../utils/global_keys.dart';
+import '../../../utils/language_util.dart';
+import '../../main_auth/presentation/main_auth.dart';
 import 'bloc/app_bloc.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,12 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppBloc()..add(InitEvent()),
+      create: (context) => ServiceLocator.sl<AppBloc>()..add(InitEvent()),
       child: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
           if (state is LoadedState) {
             return MaterialApp(
-              home: const MainAuthPage(),
+              home: state.isVerified
+                  ? const BottomNavBar()
+                  : const MainAuthPage(),
               navigatorKey: navigatorKey,
               scaffoldMessengerKey: scaffoldKey,
               debugShowCheckedModeBanner: false,
@@ -38,6 +42,7 @@ class MyApp extends StatelessWidget {
             );
           }
           return const Placeholder();
+          //sau này thay bằng một màn splash nào đó
         },
       ),
     );

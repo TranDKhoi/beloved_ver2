@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'di/service_locator.dart';
-import 'features/app/app.dart';
+import 'features/app/presentation/app.dart';
 import 'services/shared_service.dart';
 
 void main() async {
@@ -28,10 +28,3 @@ Future<void> _initialize() async {
   await SharedService.init();
   ServiceLocator().initialize();
 }
-
-//here is the most basic package need for new project
-// flutter_bloc
-// equatable
-// dio or http
-// shared preferences
-// also clean architecture flutter plugin for faster generate folder

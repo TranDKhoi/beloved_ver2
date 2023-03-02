@@ -18,6 +18,7 @@ class BaseService {
   static const String RESEND_FORGOT = "auth/resend-forgot";
   static const String RESET_PASSWORD = "auth/reset-password";
   static const String UPDATE_USER_BIO = "user";
+  static const String GET_USER_DATA = "user";
 
   late Dio dio;
 
@@ -30,7 +31,7 @@ class BaseService {
         receiveTimeout: const Duration(milliseconds: 10000),
         responseType: ResponseType.json,
         contentType: Headers.jsonContentType,
-        headers: {"Authorization": GlobalVariable.currentUser?.token},
+        headers: {"Authorization": GlobalVariable.token},
       ),
     );
   }

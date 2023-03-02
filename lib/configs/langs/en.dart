@@ -24,4 +24,10 @@ final enLang = {
   R.whichemailyouwanttoreset: "Which email you want to reset?",
   R.resetyourpassword: "Reset your password",
   R.resendcodesuccess: "Resend code success",
+  R.timeline: "Timeline",
+  R.calendar: "Calendar",
+  R.more: "More",
+  R.days: "days",
+  R.morepost: "More post",
+  R.since: "Since",
 };

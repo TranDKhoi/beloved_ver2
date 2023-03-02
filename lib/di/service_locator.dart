@@ -1,6 +1,12 @@
 import 'package:beloved_ver2/base/mapper/mapper_di.dart';
+import 'package:beloved_ver2/features/app/data/app_repository_impl.dart';
+import 'package:beloved_ver2/features/app/domain/app_repository.dart';
+import 'package:beloved_ver2/features/app/domain/app_usecase.dart';
 import 'package:beloved_ver2/features/forgot_pass/domain/repositories/forgot_pass_repository.dart';
 import 'package:beloved_ver2/features/forgot_pass/presentation/forgot_pass.dart';
+import 'package:beloved_ver2/features/home/data/repositories/home_repository_impl.dart';
+import 'package:beloved_ver2/features/home/domain/repositories/home_repository.dart';
+import 'package:beloved_ver2/features/home/domain/use_cases/home_usecase.dart';
 import 'package:beloved_ver2/features/reset_pass/presentation/reset_pass.dart';
 import 'package:beloved_ver2/features/signup/data/repositories/signup_repository_impl.dart';
 import 'package:beloved_ver2/features/signup/domain/repositories/signup_repository.dart';
@@ -13,8 +19,10 @@ import 'package:beloved_ver2/features/verify_email/domain/use_cases/verify_email
 import 'package:beloved_ver2/features/verify_email/presentation/verify_email.dart';
 import 'package:get_it/get_it.dart';
 
+import '../features/app/presentation/bloc/app_bloc.dart';
 import '../features/forgot_pass/data/repositories/forgot_pass_repository_impl.dart';
 import '../features/forgot_pass/domain/use_cases/forgot_pass_usecase.dart';
+import '../features/home/presentation/home.dart';
 import '../features/login/data/repositories/login_repository_impl.dart';
 import '../features/login/domain/repositories/login_repository.dart';
 import '../features/login/domain/use_cases/login_usecase.dart';
@@ -31,12 +39,20 @@ class ServiceLocator {
 
   Future<void> initialize() async {
     sl.registerLazySingleton(() => MapperDi());
+    _appFeat();
     _loginFeat();
     _signupFeat();
     _verifyEmailFeat();
     _userBioFeat();
     _forgotPassFeat();
     _resetPassFeat();
+    _homeFeat();
+  }
+
+  void _appFeat() {
+    sl.registerLazySingleton<AppRepository>(() => AppRepositoryImpl(sl()));
+    sl.registerLazySingleton<AppUseCase>(() => AppUseCaseImpl(sl()));
+    sl.registerFactory<AppBloc>(() => AppBloc(sl()));
   }
 
   void _loginFeat() {
@@ -80,5 +96,11 @@ class ServiceLocator {
     sl.registerLazySingleton<ResetPassUseCase>(
         () => ResetPassUseCaseImpl(sl()));
     sl.registerFactory<ResetPassBloc>(() => ResetPassBloc(sl()));
+  }
+
+  void _homeFeat() {
+    sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()));
+    sl.registerLazySingleton<HomeUseCase>(() => HomeUseCaseImpl(sl()));
+    sl.registerFactory<HomeBloc>(() => HomeBloc(sl()));
   }
 }

@@ -20,4 +20,10 @@ class AppStyle {
     color: Colors.blueGrey,
     decoration: TextDecoration.underline,
   );
+
+  static const TextStyle whiteBoldTitle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: AppFontSize.titleFontSize,
+    color: Colors.white,
+  );
 }
